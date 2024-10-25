@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -14,11 +15,12 @@ func main() {
 }
 
 type PageData struct {
-	Title   string
-	Heading string
-	Count   int
-	Content template.HTML
-	Status  string
+	Title      string
+	Heading    string
+	Count      int
+	UpdateDate string
+	Content    template.HTML
+	Status     string
 }
 
 func satelliteWatchHandler(w http.ResponseWriter, r *http.Request) {
@@ -49,14 +51,16 @@ func satelliteWatchHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//	modifyHTML(doc, "sightings", data)
+	now := time.Now().UTC().Local().Format(time.RFC822)
 
 	// Prepare the data, including HTML elements
 	data := PageData{
-		Title:   "Satellite Watcher",
-		Heading: "Satellite Watcher",
-		Count:   len(sightings),
-		Content: template.HTML(contents),
-		Status:  status,
+		Title:      "Satellite Watcher",
+		Heading:    "Satellite Watcher",
+		Count:      len(sightings),
+		UpdateDate: now,
+		Content:    template.HTML(contents),
+		Status:     status,
 	}
 
 	// Execute the template with the data
