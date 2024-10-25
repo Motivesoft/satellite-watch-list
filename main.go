@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", satHandler)
+	http.HandleFunc("/", satelliteWatchHandler)
 
 	log.Fatal(http.ListenAndServe(":8081", nil))
 }
@@ -21,14 +21,15 @@ type PageData struct {
 	Status  string
 }
 
-func satHandler(w http.ResponseWriter, r *http.Request) {
+func satelliteWatchHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles("pages/satellite-passes.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	satelliteIds := []int{25544, 48274}
+	// ISS, TianGong, HST
+	satelliteIds := []int{25544, 48274, 20580}
 
 	var contents string
 	status := "OK"

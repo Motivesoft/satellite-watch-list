@@ -51,7 +51,7 @@ var DEBUG bool
 
 func getVisualPasses(satelliteIds []int) ([]VisualPassesStructure, error) {
 	// Whether running in disconnect mode with offline data
-	DEBUG = true
+	DEBUG = false
 
 	var results []VisualPassesStructure
 
