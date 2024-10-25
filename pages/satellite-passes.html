@@ -1,0 +1,27 @@
+<!-- template.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+    </style>
+    <title>{{.Title}}</title>
+</head>
+<body>
+    <h1>{{.Heading}}</h1>
+    <div id="count">
+        Satellite count: {{.Count}}
+    </div>
+    <p>
+        <div id="content">
+            {{.Content}}
+        </div>
+    </p>
+    <div id="status">
+        Status: {{.Status}}
+    </div>
+</body>
+</html>
