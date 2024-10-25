@@ -96,7 +96,7 @@ func makePassTable(visualPass VisualPassesStructure) string {
 	htmlMiddle := `
         <tr> 
             <td>%s</td>
-            <td>%ds (%s)</td>
+            <td>%s</td>
             <td>%s</td>
             <td>%s</td>
             <td>%.2f&deg; (%s)</td>
@@ -124,7 +124,6 @@ func makePassTable(visualPass VisualPassesStructure) string {
 
 		htmlContents += fmt.Sprintf(htmlMiddle,
 			mag,
-			pass.Duration,
 			secondsToDuration(int64(pass.Duration)),
 			utcSecondsToLocalTime(pass.StartVisibility),
 			utcSecondsToLocalTime(pass.StartUTC),
