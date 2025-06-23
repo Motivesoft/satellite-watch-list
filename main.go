@@ -11,7 +11,10 @@ import (
 func main() {
 	http.HandleFunc("/", satelliteWatchHandler)
 
-	log.Fatal(http.ListenAndServe(":8081", nil))
+	ipAddress := ":8081";
+
+	fmt.Printf("Starting server on %s\n", ipAddress)
+	log.Fatal(http.ListenAndServe(ipAddress, nil))
 }
 
 type PageData struct {
